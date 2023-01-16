@@ -29,4 +29,12 @@ RUN set -ex \
 #
 # Compare test results with expected results
 #
-	&& diff -q test-results/ expected-test-results/ && echo "Tests are OK!"
+	&& diff -q test-results/ expected-test-results/ && echo "Tests are OK!" \
+#
+# Build shared library
+#
+# creates libinchi.so.1 and libinchi.so.1.06.00 in /InChI_1_06/INCHI-1-SRC/INCHI_API/bin/Linux
+#
+	&& cd /InChI_1_06/INCHI-1-SRC/INCHI_API/libinchi/gcc \
+	&& mkdir -p ../../bin/Linux \
+	&& make -j
